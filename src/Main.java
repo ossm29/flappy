@@ -1,11 +1,18 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
+
+        // On construit un objet de chaque classe (MVC) et on les relie
+        Model M = new Model();
+        View V = new View(M);
+        Controller C = new Controller(M,V);
+        V.setController(C);
+
+        // On créé une fenêtre dans laquelle on ajoute la vue
         JFrame test = new JFrame("Test dessin");
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        test.add(new Affichage());
+        test.add(V);
         test.pack();
         test.setVisible(true);
     }
