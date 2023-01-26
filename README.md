@@ -47,18 +47,11 @@ gantt
 dateFormat HH:mm
 axisFormat %H:%M
     title Séance 1 :
-
     A : A, 00:00, 20min
-    
     B : B, after A, 30min
-    
     C : C, after B, 45min
-    
     D : D, after C, 55min
-    
     E : E, after D, 60min
-    
-    
 ```
 
 
