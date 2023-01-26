@@ -1,7 +1,3 @@
----
-title: 'Readme.md'
----
-
 Flappy - Rapport de projet
 ===
 *projet pcii 2023*
@@ -41,19 +37,7 @@ Plan de développement
     * E : Documentation du projet
 
 
-
-```mermaid
-gantt
-dateFormat HH:mm
-axisFormat %H:%M
-    title Séance 1 :
-    A : A, 00:00, 20min
-    B : B, after A, 30min
-    C : C, after B, 45min
-    D : D, after C, 55min
-    E : E, after D, 60min
-```
-
+<img width="607" alt="gantt1" src="https://user-images.githubusercontent.com/77997318/214963990-1480cc53-88f7-4dbc-9a3d-6fe29ebf57f2.png">
 
 Conception générale
 ---
