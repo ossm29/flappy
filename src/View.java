@@ -5,33 +5,37 @@ import java.awt.event.MouseListener;
 
 public class View extends JPanel {
 
-
-    /** CONSTANTES */
-    public static final int HEIGHT = 400;
-    public static final int WIDTH = 600;
-    public static final int FlappyW = 15; // Flappy Width
-    public static final int FlappyH = 90; // Flappy Height
-
-
+    /* Attribut modele (pour accéder à l’état du modèle et modifier l'affichage en conséquence) */
     public Model model;
 
 
-    /** CONSTRUCTEUR */
+    /** CONSTRUCTEUR de la vue à partir d'un modèle
+     * @param m de type Model
+     */
     public View(Model m) {
         this.model = m;
-        this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
+        this.setPreferredSize(new Dimension(Model.WIDTH,Model.HEIGHT));
 
     }
 
+    /** méthode qui permet d'ajouter un contrôleur à l'affichage
+     * @param c de type Controller à lier à l'affichage
+     */
     public void setController(Controller c) {
+        /*ajoute un listener de la souris (pour détecter clics)*/
         this.addMouseListener(c);
+        /*ajoute un listener du clavier (pour détecter ESPACE) */
         this.addKeyListener(c);
     }
 
+    /** fonction de dessin sur la fenêtre
+     * @param g objet graphique
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.drawOval(50, model.getflappyY(),FlappyW,FlappyH);
+        /*dessin de l'ovale*/
+        g.drawOval(50, model.getflappyY(),Model.FlappyW,Model.FlappyH);
     }
 
 
