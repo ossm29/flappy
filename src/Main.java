@@ -1,3 +1,7 @@
+import Controller.Controller;
+import Model.*;
+import View.View;
+
 import javax.swing.*;
 
 /** Classe principale */
@@ -8,12 +12,22 @@ public class Main {
         /* On construit un objet de chaque classe (Modèle Vue Contrôleur) et on les relie : */
         /* construction du modèle */
         Model M = new Model();
+
+        /* construction du chemin */
+        Path P = new Path();
+
         /*construction de la vue */
-        View V = new View(M);
+        View V = new View(M,P);
+        /*on associe la vue au modèle*/
+        M.view = V;
         /* construction du controleur */
         Controller C = new Controller(M,V);
         /*ajout du contrôleur à l'affichage */
         V.setController(C);
+
+
+        /*création du vol à partir du modèle*/
+        Fly F = new Fly(M);
 
         /* création d'une fenêtre d'affichage */
         JFrame window = new JFrame("window");
@@ -25,6 +39,9 @@ public class Main {
         window.pack();
         /* affichage de la fenêtre */
         window.setVisible(true);
+
+
+        F.start();
     }
 
 
