@@ -17,7 +17,7 @@ public class Fly extends Thread {
             model.fall();
             /*pause entre chaque chute*/
             try {
-                Thread.sleep(Model.sleeptime);
+                Thread.sleep(Model.fallspeed);
             } catch (Exception e) {
                 e.printStackTrace();
             }

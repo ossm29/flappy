@@ -12,11 +12,13 @@ public class Model {
     /** hauteur fenêtre */
     public static final int HEIGHT = 500;
     /** temps de pause entre chaque chute (en millisecondes) */
-    public static final int sleeptime = 100;
+    public static final int fallspeed = 100;
     /** largeur ovale */
     public static final int FlappyW = 15;
     /** longueur ovale */
     public static final int FlappyH = 90;
+    /** incrément de la position */
+    public static final int step = 3;
 
     /** position en abscisse de l'ovale */
     public static final int flappyX = (int) (0.2 * WIDTH);

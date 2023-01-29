@@ -14,7 +14,6 @@ public class View extends JPanel {
     /* Attribut parcours pour afficher la ligne brisée*/
     public Path path;
 
-
     /** CONSTRUCTEUR de la vue à partir d'un modèle
      * @param m de type Model.Model
      */
@@ -46,6 +45,17 @@ public class View extends JPanel {
         }
     }
 
+    /** fonction de dessin du score
+     * @param g objet graphique
+     */
+    public void drawScore(Graphics g) {
+        /* on dessine un carré blanc à l'endroit où on écrira le score*/
+        g.clearRect(10,10,90,30);
+        /* on écrit le score */
+        g.drawString("SCORE : "+this.path.getPosition(),20,30);
+
+    }
+
     /** fonction de dessin sur la fenêtre
      * @param g objet graphique
      */
@@ -56,7 +66,8 @@ public class View extends JPanel {
         g.drawOval(Model.flappyX, model.getFlappyY(), Model.FlappyW,Model.FlappyH);
         /*dessin de la ligne brisée*/
         this.drawPath(g);
+        /* affichage du score */
+        this.drawScore(g);
     }
-
 
 }
