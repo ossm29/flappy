@@ -63,26 +63,9 @@ Plan de développement
     * D : Acquisition de compétences en Swing *55min*
     * E : Documentation du projet *60min*
 
+<img width="622" alt="seance1" src="https://user-images.githubusercontent.com/77997318/215455755-1d19c19d-2610-423a-8a50-64f618de8f7e.png">
 
 
-```mermaid
-gantt
-dateFormat HH:mm
-axisFormat %H:%M
-    title Séance 1 :
-
-    A : A, 00:00, 20min
-    
-    B : B, after A, 30min
-    
-    C : C, after B, 45min
-    
-    D : D, after C, 55min
-    
-    E : E, after D, 60min
-    
-    
-```
 
 **Séance 2 :**
 - Liste des tâches : 
@@ -92,25 +75,8 @@ axisFormat %H:%M
     * D : Ajustement fenêtre et affichage score *20min*
     * E : Documentation du projet *60min*
 
+<img width="633" alt="seance2" src="https://user-images.githubusercontent.com/77997318/215455855-70c513b0-3195-4cd4-9513-76d926ce0bb9.png">
 
-```mermaid
-gantt
-dateFormat HH:mm
-axisFormat %H:%M
-    title Séance 2 :
-
-    A : A, 00:00, 40min
-    
-    B : B, after A, 40min
-    
-    C : C, after B, 60min
-    
-    D : D, after C, 20min
-    
-    E : E, after D, 60min
-    
-    
-```
 
 **Séance 3 :**
 
@@ -121,24 +87,8 @@ axisFormat %H:%M
     * D : Résolution des pb de synchronisation : création d'un thread d'affichage *45min*
     * E : Documentation du projet *60min*
 
-```mermaid
-gantt
-dateFormat HH:mm
-axisFormat %H:%M
-    title Séance 3 :
 
-    A : A, 00:00, 60min
-    
-    B : B, after A, 30min
-    
-    C : C, after B, 60min
-    
-    D : D, after C, 45min
-    
-    E : E, after D, 60min
-    
-    
-```
+<img width="637" alt="seance3" src="https://user-images.githubusercontent.com/77997318/215455936-33347a33-c6e0-457b-8267-28f35de9aa81.png">
 
 
 Conception générale
