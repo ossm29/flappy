@@ -237,8 +237,8 @@ Documentation développeur
 La classe main est située dans le dossier src.
 Les autres classes sont réparties dans les 3 packages décrits dans la rubrique Conception générale.
 Les constantes du modèle sont décrites dans la classe `Model.java` et sont décrites en commentaire.
-La classe Vue contient les fonctions d'affichages. Elle 
-Des améliorations intéressantes sont l'ajout
+La classe Vue contient les fonctions d'affichages. 
+Une améliorations intéressante est l'ajout d'un menu par une nouvelle classe dans`View`. On pourrait ajuster la vitesse ou d'autres variables de `etat` directement ou même ajouter des options commme recommencer une partie en ajoutant un bouton sur la fenêtre Joptionpane affiché en fin de partie.
 
 Conclusion et perspectives
 ---
