@@ -7,19 +7,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/** Classe qui contient ce qui est relatif à l’affichage : gère la façon dont l’état du modèle est rendu visible à l’utilisateur */
 public class View extends JPanel {
 
     /* Attribut modele (pour accéder à l’état du modèle et modifier l'affichage en conséquence) */
     public Model model;
     /* Attribut parcours pour afficher la ligne brisée*/
     public Path path;
+    /* thread de rafraichissement d'affichage*/
+    public Repaint refresh;
+
+    public BirdView birdView;
 
     /** CONSTRUCTEUR de la vue à partir d'un modèle
      * @param m de type Model.Model
      */
-    public View(Model m, Path p) {
+    public View(Model m, Path p,BirdView BW) {
         this.model = m;
         this.path = p;
+        this.birdView = BW;
         this.setPreferredSize(new Dimension(Model.WIDTH,Model.HEIGHT));
     }
 
@@ -31,6 +37,13 @@ public class View extends JPanel {
         this.addMouseListener(c);
         /*ajoute un listener du clavier (pour détecter ESPACE) */
         this.addKeyListener(c);
+    }
+
+    /** méthode qui permet d'ajouter le thread de rafraichissement à l'affichage
+     * @param R de type View.Repaint à lier à l'affichage
+     */
+    public void setRefresh(Repaint R) {
+        this.refresh = R;
     }
 
     /** fonction de dessin du parcours
@@ -66,6 +79,9 @@ public class View extends JPanel {
         g.drawOval(Model.flappyX, model.getFlappyY(), Model.FlappyW,Model.FlappyH);
         /*dessin de la ligne brisée*/
         this.drawPath(g);
+        if(this.birdView != null) {
+            this.birdView.drawBird(g);
+        }
         /* affichage du score */
         this.drawScore(g);
     }

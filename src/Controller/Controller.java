@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/** Classe controleur : gère les modifications de l’état du modèle */
 public class Controller implements MouseListener, KeyListener {
 
     /* ATTRIBUTS */
@@ -25,18 +26,30 @@ public class Controller implements MouseListener, KeyListener {
     /** fonction qui déclenche le saut lors d'un clic de l'utilisateur */
     @Override
     public void mouseClicked(MouseEvent e) {
-        model.jump();
-        view.repaint();
-        //view.repaint(45, model.getflappyY()-5,25,130); //on redessine la zone autour du cercle avec une marge de 5px
+        if(model.GameOver) {
+            /* si la partie est perdue on retire le Listener*/
+            view.removeMouseListener(this);
+        } else {
+            /* sinon le clic déclenche un saut*/
+            model.jump();
+            /* mise à jour de l'affichage*/
+            view.refresh.setEdited();
+        }
     }
 
     /** fonction qui déclenche le saut lors d'un appui sur la touche ESPACE de l'utilisateur */
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-            model.jump();
-            view.repaint();
-            //view.repaint(45, model.getFlappyY()-5,25,130); //on redessine la zone autour du cercle avec une marge de 5px
+            /* si la partie est perdue on retire le Listener*/
+            if(model.GameOver) {
+                view.removeMouseListener(this);
+            } else {
+                /* sinon le clic déclenche un saut*/
+                model.jump();
+                /* mise à jour de l'affichage*/
+                view.refresh.setEdited();
+            }
         }
     }
 

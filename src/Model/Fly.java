@@ -10,10 +10,11 @@ public class Fly extends Thread {
         this.model = m;
     }
 
+    /* méthode run thread */
     @Override
     public void run() {
         /*boucle infinie pour faire chuter flappy*/
-        while(true) {
+        while(!model.GameOver) {
             model.fall();
             /*pause entre chaque chute*/
             try {

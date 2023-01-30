@@ -31,6 +31,8 @@ public class Path {
         /*On place le premier point au niveau du départ de flappy*/
         Point start = new Point(Model.flappyX,Model.HEIGHT/2);
         this.path.add(start);
+        /*on ajoute un point pour commencer le jeu par une petite ligne droite*/
+        this.path.add(new Point(start.x+minX_dist,Model.HEIGHT/2));
         /* on initialise le parcours avec des points d'abscisse croissante */
         initPath();
     }
@@ -40,8 +42,8 @@ public class Path {
      */
     public void initPath() {
 
-        /* On récupère le point de départ de la liste*/
-        Point lastPoint = path.get(0);
+        /* On récupère 2e point de la liste (après la ligne droite initialisée). */
+        Point lastPoint = path.get(1);
 
         while(lastPoint.x < Model.WIDTH) {
             /* On récupère le dernier point de la liste*/
