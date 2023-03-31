@@ -1,11 +1,18 @@
----
-title: 'Readme.md'
----
 
 Flappy - Rapport de projet
 ===
-*projet pcii 2023*
+*flappy circle java game*
 
+- [Flappy - Rapport de projet](#flappy---rapport-de-projet)
+  * [Introduction](#introduction)
+  * [Analyse globale](#Analyse-globale)
+  * [Plan de développement](#Plan-de-développement)
+  * [Conception générale](#Conception-générale)
+  * [Conception détaillée](#Conception-détaillée)
+  * [Résultat](#Résultat)
+  * [Documentation utilisateur](#Documentation-utilisateur)
+  * [Documentation développeur](#Documentation-développeur)
+  * [Conclusion et perspectives](#Conclusion-et-perspectives)
 
 ## Introduction
 
@@ -23,45 +30,45 @@ L'interface graphique est de cette forme :
 
 Analyse globale
 ---
-
-Pour ce faire, il faut trois fonctionnalités principales : 
-- l'interface graphique avec l'ovale et la ligne brisée (présentée ci-dessus) : \
-la fenêtre de jeu apparaît avec un ovale dont la hauteur est dirigée par le joueur ainsi qu'une ligne brisée sur laquelle le joueur doit le maintenir
-- le défilement automatique de la ligne brisée : \
+Pour ce faire, il faut trois fonctionnalités principales :
+ 
+- L'interface graphique avec l'ovale et la ligne brisée (présentée ci-dessus) : \
+La fenêtre de jeu apparaît avec un ovale dont la hauteur est dirigée par le joueur ainsi qu'une ligne brisée sur laquelle le joueur doit le maintenir
+- Le défilement automatique de la ligne brisée : \
 Le parcours doit défiler; la ligne brisée avance pour simuler le déplacement horizontal de l'ovale. Il faut générer un parcours aléatoire infini (tant que la partie dure) et le faire défiler en permanence (*programmation concurrente*).
-- la réaction de l’ovale aux clics de l’utilisateur : \
+- La réaction de l’ovale aux clics de l’utilisateur : \
 Un clic utilisateur doit faire "sauter" l'ovale. Il faut être à l'écoute des évènements souris/clavier et incrémenter la position de l'ovale en conséquence.
 
 
 On commencera par traitement de ces deux sous-fonctionnalités : 
-- création d'une fenêtre et dessin de l'ovale : \
-implémentation d'une interface graphique contituée de la fenêtre principale - *objet* `JFrame` - et de l'ovale.
-- déplacement vers le haut de l'ovale lors d'un clic : \
-gestion de l'évènement clic et définition du saut.
+- Création d'une fenêtre et dessin de l'ovale : \
+Implémentation d'une interface graphique contituée de la fenêtre principale - *objet* `JFrame` - et de l'ovale.
+- Déplacement vers le haut de l'ovale lors d'un clic : \
+Gestion de l'évènement clic et définition du saut.
 
 **Tout en organisant l'interface graphique selon le modèle MVC**
 
 Ensuite, il faut modifier les éléments de l'affichage (chute de l'ovale, génération / défilement de la ligne) de façon indépendante. L'usage de threads permettra d'implémenter : 
 
-- chute de l'ovale : \
+- Chute de l'ovale : \
 L'ovale doit être en chute constante lorsque l'utilisateur ne clique pas  (*programmation concurrente*). C'est ce qui donne cet effet de "Vol". Ceci demande de fréquemment mettre à jour l'affichage.
-- construction du parcours (la ligne brisée) :\
+- Construction du parcours (la ligne brisée) :\
 La ligne est d'abord initialisée, avec quelques contraintes : *commencer à la position initiale de l'ovale, ici la ligne doit couvrir tout l'affichage; l'inclinaison de pente doit être inférieure à la vitesse de chute*.
-- défilement de la ligne brisée : \
-toujours en respectant ces contraintes, il faut que le parcours soit aléatoire et continu...
-- affichage du score : \
+- Défilement de la ligne brisée : \
+Toujours en respectant ces contraintes, il faut que le parcours soit aléatoire et continu...
+- Affichage du score : \
 Plus le décor défile, plus le score augmente - gestion et l'affichage de cette variable.
 
 Enfin, pour terminer le jeu : 
 - ajout d'éléments de décors (oiseaux) ! <img src="https://i.imgur.com/JeTwHUV.gif" alt="drawing" width="100"/> \
 Dans l'arrière plan apparaissent régulièrement des oiseaux animés. Ils apparaissent régulièrement sans être trop nombreux sur l'affichage.
 
-- détection des collisions (fin de partie) :\
+- Détection des collisions (fin de partie) :\
 La partie se termine lorsque l'ovale entre en contact avec la ligne brisée. Cette étape concerne la détection de cet évènement.
-- arrêt des autres fonctions (vol, défilement du parcours...) : \
+- Arrêt des autres fonctions (vol, défilement du parcours...) : \
 La fin de partie doit interrompre les autres fonctionnalités : *threads de chute de l'ovale, d'avancement du parcours et le contrôle de l'ovale...* 
-- affichage d'un message de fin de partie : \
-la fin de partie déclenche une nouvelle fenêtre contenant le score et un message.
+- Affichage d'un message de fin de partie : \
+La fin de partie déclenche une nouvelle fenêtre contenant le score et un message.
 
 La construction et l'animation du parcours sont les fonctionnalités qui me semblent les plus complexes à implémenter. En effet, en plus des contraintes citées,  l'algorithme de génération aléatoire ne doit pas sembler répétitif (donc la hauteur du point ET la distance avec le suivant sont aléatoires ), on doit générer un point non visible pour que le parcours occupe tout l'écran et supprimer les points qui ne sont plus utilisés. 
 
@@ -77,26 +84,9 @@ Plan de développement
     * D : Acquisition de compétences en Swing *55min*
     * E : Documentation du projet *60min*
 
+<img width="622" alt="seance1" src="https://user-images.githubusercontent.com/77997318/215455755-1d19c19d-2610-423a-8a50-64f618de8f7e.png">
 
 
-```mermaid
-gantt
-dateFormat HH:mm
-axisFormat %H:%M
-    title Séance 1 :
-
-    A : A, 00:00, 20min
-    
-    B : B, after A, 30min
-    
-    C : C, after B, 45min
-    
-    D : D, after C, 55min
-    
-    E : E, after D, 60min
-    
-    
-```
 
 **Séance 2 :**
 - Liste des tâches : 
@@ -106,25 +96,8 @@ axisFormat %H:%M
     * D : Ajustement fenêtre et affichage score *20min*
     * E : Documentation du projet *60min*
 
+<img width="633" alt="seance2" src="https://user-images.githubusercontent.com/77997318/215455855-70c513b0-3195-4cd4-9513-76d926ce0bb9.png">
 
-```mermaid
-gantt
-dateFormat HH:mm
-axisFormat %H:%M
-    title Séance 2 :
-
-    A : A, 00:00, 40min
-    
-    B : B, after A, 40min
-    
-    C : C, after B, 60min
-    
-    D : D, after C, 20min
-    
-    E : E, after D, 60min
-    
-    
-```
 
 **Séance 3 :**
 
@@ -135,24 +108,8 @@ axisFormat %H:%M
     * D : Résolution des pb de synchronisation : création d'un thread d'affichage *45min*
     * E : Documentation du projet *60min*
 
-```mermaid
-gantt
-dateFormat HH:mm
-axisFormat %H:%M
-    title Séance 3 :
 
-    A : A, 00:00, 60min
-    
-    B : B, after A, 30min
-    
-    C : C, after B, 60min
-    
-    D : D, after C, 45min
-    
-    E : E, after D, 60min
-    
-    
-```
+<img width="637" alt="seance3" src="https://user-images.githubusercontent.com/77997318/215455936-33347a33-c6e0-457b-8267-28f35de9aa81.png">
 
 
 Conception générale
@@ -257,3 +214,5 @@ Une améliorations intéressante est l'ajout d'un menu par une nouvelle classe d
 Conclusion et perspectives
 ---
 En conclusion, ce mini-projet était plutôt instructif. J'ai pu remarquer l'importance de la documentation et de la mise en commentaires de mon code. Même si ce n'est pas un projet de groupe, cela m'a aidé à organiser mon code, à le débogguer et à m'y replonger plus facilement à la prochaine séance. Il permet également de s'initier à l'utilisation des threads et de comprendre les aspects de la synchronisation. J'ai eu des idées d'amélioration mais j'ai manqué de temps : une amélioration l'interface graphique en ajoutant un paysage en arrière-plan. J'aurais également implémenté un système qui permet de recommencer une partie après une défaite...  Ce projet m'a aidé à développer de nouvelles compétences utiles pour le projet de groupe à venir.
+
+
